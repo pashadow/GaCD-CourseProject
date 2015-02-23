@@ -24,7 +24,8 @@ valid_columns <- c(TRUE, TRUE, grepl("mean\\(\\)", data_features$Name) | grepl("
 tidyData <- mergedData[, valid_columns]
 
 # 3.Uses descriptive activity names to name the activities in the data set.
-activities <- data.frame("Label"=1:6, "Activity"=c("WALKING", "WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING"))
+activities <- read.table("./UCI HAR Dataset/activity_labels.txt")
+names(activities) <- c("Label", "Activity")
 tidyData2 = merge(activities, tidyData, all=TRUE)
 tidyData3 = tidyData2[, 2:69]
 

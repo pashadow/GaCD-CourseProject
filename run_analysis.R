@@ -1,3 +1,6 @@
+library(reshape2)
+library(plyr)
+
 # 0. Load data into R
 # Features set
 data_features <- read.table("./UCI HAR Dataset/features.txt", stringsAsFactors=FALSE)
@@ -30,7 +33,6 @@ tidyData2 = merge(activities, tidyData, all=TRUE)
 tidyData3 = tidyData2[, 2:69]
 
 # 4.Appropriately labels the data set with descriptive variable names.
-names(tidyData3)
 columnNames <- names(tidyData3)
 columnNames <- gsub("^f","Freq", columnNames)
 columnNames <- gsub("^t","Time", columnNames)
